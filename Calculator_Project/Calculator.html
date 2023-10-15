@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Basic Calculator</title>
+    <style>
+        /*Add CSS styling here*/
+        body{
+            font-family:  Arial, sans-serif;
+            text-align: center;
+        }
+
+        .calculator{
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background-color: aliceblue;
+        }
+
+        .calculator input{
+            width: 64%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .calculator button{
+            width : 20%;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .calculator button.operation {
+            width: 20%;
+            background-color: rgb(128, 122, 122);
+        }
+
+        .calculator button.clear{
+        background-color: turquoise;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <!-- <div colspan="3"> -->
+        <input type="text" name="screen" id="screen">
+        <button class="clear" onclick="clearDisplay()">AC</button><br>
+        <!-- </div> -->
+        
+        
+        <button onclick="appendCharacter('9')">9</button>
+        <button onclick="appendCharacter('8')">8</button>
+        <button onclick="appendCharacter('7')">7</button>
+        <button class="operation" onclick="appendCharacter('+')">+</button><br>
+       
+        <button onclick="appendCharacter('4')">4</button>
+        <button onclick="appendCharacter('5')">5</button>
+        <button onclick="appendCharacter('6')">6</button>
+        <button class="operation" onclick="appendCharacter('-')">-</button><br>
+        
+        <button onclick="appendCharacter('1')">1</button>
+        <button onclick="appendCharacter('2')">2</button>
+        <button onclick="appendCharacter('3')">3</button>
+        <button class="operation" onclick="appendCharacter('/')">/</button><br>
+        
+        <button onclick="appendCharacter('.')">.</button>
+        <button onclick="appendCharacter('0')">0</button>
+        <button onclick="calculateResult()">=</button>
+        <button class="operation" onclick="appendCharacter('*')">*</button><br>
+    </div>
+
+    <script>
+        /*javascript functions for calculations*/
+
+        function appendCharacter(char){
+            document.getElementById('screen').value += char;
+        }
+
+        function clearDisplay()
+        {
+            document.getElementById('screen').value = '';
+        }
+
+        function calculateResult()
+        {
+            let expression = document.getElementById('screen').value;
+            try
+            {
+                let screen = eval(expression);
+                document.getElementById('screen').value = screen;
+            }
+            catch(error)
+            {
+                document.getElementById('screen').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
